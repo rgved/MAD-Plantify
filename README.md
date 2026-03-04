@@ -1,20 +1,38 @@
-<div align="center">
-<img width="1200" height="475" alt="GHBanner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
-</div>
+# Plantify (Android Studio Project)
 
-# Run and deploy your AI Studio app
+This repository contains an Android Studio project (Java + XML).
 
-This contains everything you need to run your app locally.
+## Project structure
+- `settings.gradle`
+- `build.gradle` (project)
+- `gradle.properties`
+- `gradlew`, `gradlew.bat`, `gradle/wrapper/*`
+- `app/build.gradle`
+- `app/src/main/AndroidManifest.xml`
+- `app/src/main/java/com/mad/plantify/*.java`
+- `app/src/main/res/**`
 
-View your app in AI Studio: https://ai.studio/apps/a704c80c-8e9d-4520-9993-81626d135afe
+## Build-readiness checks and likely issues
+1. **JDK version mismatch**
+   - Android Gradle Plugin `8.4.2` in this repo expects a supported JDK (recommended JDK 17 in Android Studio for this setup).
+   - Using unsupported JDK versions can fail during Gradle script evaluation.
 
-## Run Locally
+2. **Gradle wrapper download/network**
+   - First run of `./gradlew` downloads Gradle from `services.gradle.org`.
+   - If your network/proxy blocks it, build sync will fail until network is available or mirror/proxy is configured.
 
-**Prerequisites:**  Node.js
+3. **Android SDK not installed/accepted licenses**
+   - Build requires installed Android SDK Platform 34 + build tools and accepted SDK licenses.
 
+## Open in Android Studio
+1. Open Android Studio.
+2. Select **Open** and choose this repository folder.
+3. Set **Gradle JDK = 17** (if prompted).
+4. Let Gradle sync complete.
+5. Run the `app` module on emulator/device.
 
-1. Install dependencies:
-   `npm install`
-2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
-3. Run the app:
-   `npm run dev`
+## PR platform note (binary files)
+- Some PR/review platforms reject binary files in generated diffs (for example `gradle/wrapper/gradle-wrapper.jar`).
+- If your PR tool shows **"Binary files are not supported"**, keep only `gradle-wrapper.properties` in git and regenerate the jar locally when needed by running:
+  - `gradle wrapper` (with a compatible local Gradle/JDK), or
+  - Android Studio sync / wrapper regeneration workflow.
