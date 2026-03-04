@@ -1,16 +1,24 @@
 <resources>
     <string name="app_name">Plantify</string>
     <string name="nav_home">Home</string>
-    <string name="nav_identify">Identify</string>
+    <string name="nav_identify">Scan</string>
     <string name="nav_care">Care</string>
-    <string name="nav_shop">Shop</string>
+    <string name="nav_shop">History</string>
 
     <string name="home_title">Plantify</string>
-    <string name="home_subtitle">Your personal plant companion on Android.</string>
-    <string name="identify_title">Identify Plants</string>
-    <string name="identify_description">Capture a photo to detect plant species and get quick insights.</string>
-    <string name="care_title">Care Plans</string>
-    <string name="care_description">Track watering, sunlight, and fertilizer schedules for healthier plants.</string>
-    <string name="shop_title">Plant Shop</string>
-    <string name="shop_description">Browse pots, tools, and plant-friendly supplies.</string>
+    <string name="home_subtitle">Scanned plants • on-device ML first, cloud AI when needed.</string>
+    <string name="identify_title">Scan Plant</string>
+    <string name="identify_description">Use CameraX preview. Capture and identify with TensorFlow Lite offline.</string>
+    <string name="care_title">Plant Details</string>
+    <string name="care_description">Track watering, sunlight, fertilizer, and care tips.</string>
+    <string name="shop_title">History</string>
+    <string name="shop_description">View previous scans and compare ML vs LLM results.</string>
+
+    <string name="history_title">Scan History</string>
+    <string name="history_subtitle">Stored locally with model confidence and fallback output.</string>
+    <string name="camera_preview_placeholder">Camera Preview</string>
+    <string name="capture_action">Capture plant photo</string>
+    <string name="camera_action">Open camera</string>
+    <string name="scanned_plant">Scanned plant image</string>
+    <string name="sleep_entry">Sleep Entry</string>
 </resources>
