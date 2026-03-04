@@ -1,14 +1,17 @@
 package com.mad.plantify;
 
 import android.os.Bundle;
+import android.widget.ImageView;
+import android.widget.TextView;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
-import com.google.android.material.navigation.NavigationBarView;
 import com.mad.plantify.databinding.ActivityMainBinding;
 
+/**
+ * Main host activity with a custom floating-center navigation bar.
+ */
 public class MainActivity extends AppCompatActivity {
 
     private ActivityMainBinding binding;
@@ -21,32 +24,30 @@ public class MainActivity extends AppCompatActivity {
 
         if (savedInstanceState == null) {
             switchFragment(new HomeFragment());
-            binding.bottomNav.setSelectedItemId(R.id.nav_home);
+            setSelectedTab(Tab.HOME);
         }
 
-        binding.bottomNav.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(@NonNull android.view.MenuItem item) {
-                int id = item.getItemId();
-                if (id == R.id.nav_home) {
-                    switchFragment(new HomeFragment());
-                    return true;
-                }
-                if (id == R.id.nav_identify) {
-                    switchFragment(new IdentifyFragment());
-                    return true;
-                }
-                if (id == R.id.nav_care) {
-                    switchFragment(new CareFragment());
-                    return true;
-                }
-                if (id == R.id.nav_shop) {
-                    switchFragment(new ShopFragment());
-                    return true;
-                }
-                return false;
-            }
+        binding.navHome.setOnClickListener(v -> {
+            switchFragment(new HomeFragment());
+            setSelectedTab(Tab.HOME);
         });
+
+        binding.navLibrary.setOnClickListener(v -> {
+            switchFragment(new ShopFragment());
+            setSelectedTab(Tab.LIBRARY);
+        });
+
+        binding.navAlerts.setOnClickListener(v -> {
+            switchFragment(new CareFragment());
+            setSelectedTab(Tab.ALERTS);
+        });
+
+        binding.navProfile.setOnClickListener(v -> {
+            switchFragment(new ProfileFragment());
+            setSelectedTab(Tab.PROFILE);
+        });
+
+        binding.navScan.setOnClickListener(v -> switchFragment(new IdentifyFragment()));
     }
 
     private void switchFragment(Fragment fragment) {
@@ -54,5 +55,25 @@ public class MainActivity extends AppCompatActivity {
                 .beginTransaction()
                 .replace(R.id.fragment_container, fragment)
                 .commit();
+    }
+
+    private void setSelectedTab(Tab tab) {
+        setNavState(binding.navHomeIcon, binding.navHomeLabel, tab == Tab.HOME);
+        setNavState(binding.navLibraryIcon, binding.navLibraryLabel, tab == Tab.LIBRARY);
+        setNavState(binding.navAlertsIcon, binding.navAlertsLabel, tab == Tab.ALERTS);
+        setNavState(binding.navProfileIcon, binding.navProfileLabel, tab == Tab.PROFILE);
+    }
+
+    private void setNavState(ImageView icon, TextView label, boolean selected) {
+        int color = getColor(selected ? R.color.nav_active : R.color.nav_inactive);
+        icon.setColorFilter(color);
+        label.setTextColor(color);
+    }
+
+    private enum Tab {
+        HOME,
+        LIBRARY,
+        ALERTS,
+        PROFILE
     }
 }
