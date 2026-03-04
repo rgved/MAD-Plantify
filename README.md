@@ -7,6 +7,7 @@ It was converted from a Google AI Studio / Vite TypeScript starter.
 - `settings.gradle`
 - `build.gradle` (project)
 - `gradle.properties`
+- `gradlew`, `gradlew.bat`, `gradle/wrapper/*`
 - `app/build.gradle`
 - `app/src/main/AndroidManifest.xml`
 - `app/src/main/java/com/mad/plantify/*.java`
@@ -19,8 +20,9 @@ It was converted from a Google AI Studio / Vite TypeScript starter.
 ## Open in Android Studio
 1. Open Android Studio.
 2. Click **Open** and select this repository folder.
-3. Allow Gradle sync to complete.
-4. Run the `app` module on an emulator or device.
+3. Set **Gradle JDK = 17** if prompted.
+4. Allow Gradle sync to complete.
+5. Run the `app` module on an emulator or device.
 
 ## Features
 - `MainActivity` with bottom navigation
@@ -31,12 +33,17 @@ It was converted from a Google AI Studio / Vite TypeScript starter.
   - Shop
 - XML-based layouts in `app/src/main/res/layout`
 
-## Notes
-The original repository did not contain the full React/TypeScript source code (`src/` folder and components), so a direct feature-by-feature migration was not possible.  
+## Build Notes
+- Android Gradle Plugin `8.4.2` works best with **JDK 17**.
+- First Gradle sync will download dependencies from `services.gradle.org`.
+- Ensure Android SDK Platform 34 and build tools are installed.
 
-Instead, this project provides a complete Android Studio starter structure that can be extended with:
+## Migration Notes
+The original repository did not contain the full React/TypeScript source code (`src/` folder and components), so a direct feature-by-feature migration was not possible.
+
+Instead, this project provides an Android Studio starter structure that can be extended with:
 - Networking (Retrofit / OkHttp)
-- ViewModels + repository architecture
-- Camera and plant identification workflow
+- ViewModels + repository pattern
+- Camera + image upload for plant identification
 - Local persistence (Room / DataStore)
 - Shop and product browsing features
