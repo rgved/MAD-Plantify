@@ -1,20 +1,22 @@
-<div align="center">
-<img width="1200" height="475" alt="GHBanner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
-</div>
+# Plantify (Android Studio Project)
 
-# Run and deploy your AI Studio app
+This repository now contains only Android Studio project files for a Java + XML Android app.
 
-This contains everything you need to run your app locally.
+## Project structure
+- `settings.gradle`
+- `build.gradle` (project)
+- `gradle.properties`
+- `app/build.gradle`
+- `app/src/main/AndroidManifest.xml`
+- `app/src/main/java/com/mad/plantify/*.java`
+- `app/src/main/res/**`
 
-View your app in AI Studio: https://ai.studio/apps/a704c80c-8e9d-4520-9993-81626d135afe
+## Open in Android Studio
+1. Open Android Studio.
+2. Select **Open** and choose this repository folder.
+3. Allow Gradle sync to complete.
+4. Run the `app` module on an emulator or device.
 
-## Run Locally
-
-**Prerequisites:**  Node.js
-
-
-1. Install dependencies:
-   `npm install`
-2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
-3. Run the app:
-   `npm run dev`
+## Notes
+- The app includes a `MainActivity` and four fragments: Home, Identify, Care, and Shop.
+- Layouts are in XML under `app/src/main/res/layout`.
